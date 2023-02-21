@@ -9,7 +9,7 @@ import (
 
 var token = os.Getenv("LASTFM_API_KEY")
 var username = "thallesp"
-var pastTrack *RecentTrack
+var pastTrack = &RecentTrack{}
 
 func main() {
 	ticker := time.NewTicker(5 * time.Second)
@@ -19,6 +19,7 @@ func main() {
 		track := GetCurrentPlayingTrack()
 
 		if track == nil {
+			client.Logout()
 			continue
 		}
 
@@ -27,7 +28,9 @@ func main() {
 		}
 
 		SetStatus(track)
+		pastTrack = track
 	}
+	client.Logout()
 }
 
 func GetCurrentPlayingTrack() *RecentTrack {
@@ -44,7 +47,6 @@ func GetCurrentPlayingTrack() *RecentTrack {
 
 func SetStatus(track *RecentTrack) {
 	err := client.Login("1077561394809020416")
-	defer client.Logout()
 
 	image := track.Image[3].Text
 
@@ -53,8 +55,8 @@ func SetStatus(track *RecentTrack) {
 	}
 
 	err = client.SetActivity(client.Activity{
-		State:      track.Name,
-		Details:    track.Artist.Text,
+		State:      track.Artist.Text,
+		Details:    track.Name,
 		LargeImage: image,
 		Buttons: []*client.Button{
 			{
