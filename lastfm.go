@@ -36,33 +36,6 @@ type RecentTrack struct {
 		Text string `json:"#text"`
 	} `json:"date,omitempty"`
 }
-type Track struct {
-	Name       string `json:"name"`
-	URL        string `json:"url"`
-	Duration   string `json:"duration"`
-	Streamable struct {
-		Text      string `json:"#text"`
-		Fulltrack string `json:"fulltrack"`
-	} `json:"streamable"`
-	Listeners string `json:"listeners"`
-	Playcount string `json:"playcount"`
-	Artist    struct {
-		Name string `json:"name"`
-		URL  string `json:"url"`
-	} `json:"artist"`
-	Album struct {
-		Artist string `json:"artist"`
-		Title  string `json:"title"`
-		URL    string `json:"url"`
-		Image  []struct {
-			Text string `json:"#text"`
-			Size string `json:"size"`
-		} `json:"image"`
-	} `json:"album"`
-	Toptags struct {
-		Tag []interface{} `json:"tag"`
-	} `json:"toptags"`
-}
 
 type NowListeningTrackResponse struct {
 	Recenttracks struct {
