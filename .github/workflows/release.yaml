@@ -22,8 +22,7 @@ jobs:
           distribution: goreleaser
           version: latest
           build:
-            goos:
-              - windows
+            goos: [windows]
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
