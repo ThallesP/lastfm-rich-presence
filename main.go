@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/hugolgst/rich-go/client"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -50,7 +51,7 @@ func SetStatus(track *RecentTrack) {
 
 	image := track.Image[3].Text
 
-	if image == "" {
+	if image == "" || strings.Contains(image, "2a96cbd8b46e442fc41c2b86b821562f") {
 		image = "https://pngimg.com/d/vinyl_PNG35.png"
 	}
 
