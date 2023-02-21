@@ -1,4 +1,5 @@
 builds:
+  -
   ignore:
     - goos: windows
       goarch: arm
